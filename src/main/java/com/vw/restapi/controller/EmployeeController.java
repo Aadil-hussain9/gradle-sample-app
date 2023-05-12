@@ -85,5 +85,24 @@ public class EmployeeController {
     }
 
 
+    @GetMapping("/employee/search")
+    public ResponseEntity<List<Employee>> searchProducts(@RequestParam("query") String query){
+        return ResponseEntity.ok(employeeService.searchEmployees(query));
+    }
+
+
+
+    @GetMapping("/employee/search2")
+    public ResponseEntity<List<Employee>> searchUsers(
+            @RequestParam(name = "name", required = false) String name,
+            @RequestParam(name = "emailId", required = false) String emailId,
+            @RequestParam(name = "userId", required = false) Long userId) {
+
+        List<Employee> users = employeeService.searchUsersMethod2(name, emailId, userId);
+        return ResponseEntity.ok(users);
+    }
+
+
+
 
 }

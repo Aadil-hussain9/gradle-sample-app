@@ -14,6 +14,10 @@ configurations {
 	}
 }
 
+//docker {
+//	baseImage "gradle:4.7.0-jdk8-alpine AS build"
+//	maintainer 'Aadil-Dar "daradil639@gmail.com"'
+//}
 
 repositories {
 	mavenCentral()

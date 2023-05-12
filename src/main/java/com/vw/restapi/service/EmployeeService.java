@@ -17,4 +17,8 @@ public interface EmployeeService {
     List<Employee> getEmployeeWithFilter(FilterRequest filterRequest);
 
     ResponseEntity<?> searchByName(String name);
+
+    List<Employee> searchEmployees(String query);
+
+    List<Employee> searchUsersMethod2(String name, String emailId, Long Userid);
 }

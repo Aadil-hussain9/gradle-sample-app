@@ -2,6 +2,7 @@ package com.vw.restapi.ServiceImpl;
 
 import com.vw.restapi.model.Employee;
 import com.vw.restapi.repository.EmployeeRepository;
+import com.vw.restapi.repository.UserSpecifications;
 import com.vw.restapi.request.FilterRequest;
 import com.vw.restapi.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
@@ -53,5 +54,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ResponseEntity<?> searchByName(String name) {
         List<Employee> employees = employeeRepository.findByName(name);
         return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @Override
+    public List<Employee> searchEmployees(String query) {
+        List<Employee> employees = employeeRepository.findByQuery(query);
+        return employees;
+    }
+
+    @Override
+    public List<Employee> searchUsersMethod2(String name, String emailId, Long userId) {
+        List<Employee> users = employeeRepository.findAll(UserSpecifications.search(name, emailId, userId));
+        return users;
     }
 }
